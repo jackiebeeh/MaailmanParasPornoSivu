@@ -3,6 +3,7 @@ const loader = document.getElementById("loader");
 
 window.addEventListener("load", () => {
   document.body.classList.add("loaded");
+  window.removeEventListener("load", () => {});
 });
 
 // Menu Images:
@@ -29,22 +30,20 @@ const blurImg = document.getElementsByClassName("blur-img");
 let dropdownContent = document.querySelector(".dropdown-content");
 let options = dropdownContent.getElementsByTagName('a')
 
-
-
-// options.onmouseenter = () => {
+options.onmouseenter = () => {
   for(let i = 0; i < options.length||i < images.length; i++) {
     options[i].addEventListener("mouseover", function(){
       img.innerHTML = `<img src="${images[i+1]}" />`;
     })
   }
-// }
-// options.onmouseleave = () => {
+}
+options.onmouseleave = () => {
   for(let i = 0; i < options.length||i < images.length; i++) {
     dropdownContent.addEventListener("mouseout", function(){
       img.innerHTML = `<img src="${images[0]}" />`;
     })
   }
-// }
+}
 
 // ****************************************************
 // $(document).ready(function() {
@@ -53,3 +52,14 @@ let options = dropdownContent.getElementsByTagName('a')
 //   },3000);
 // });
 
+
+
+// Age check
+
+let ageCheckMask = document.querySelector(".ageCheck");
+let ageCheckButton = document.querySelector(".continueButton");
+
+ageCheckButton.addEventListener("click", () => {
+  console.log(`click`);
+  ageCheckMask.classList.add("hidden");
+});
